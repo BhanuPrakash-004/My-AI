@@ -350,9 +350,15 @@ export function useChat() {
       if (!conversationId || isTempId(exchange._id)) return;
       try {
         const result = await api.selectCandidate(conversationId, exchange._id, index);
+        // live: false shows the kept answer in full instead of typing it out again.
         setActive((prev) =>
           prev?._id === conversationId
-            ? { ...prev, exchanges: prev.exchanges.map((e) => (e._id === exchange._id ? { ...e, ...result.exchange } : e)) }
+            ? {
+                ...prev,
+                exchanges: prev.exchanges.map((e) =>
+                  e._id === exchange._id ? { ...e, ...result.exchange, live: false } : e,
+                ),
+              }
             : prev,
         );
         upsertSummary(result.conversation);

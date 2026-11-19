@@ -102,7 +102,7 @@ describe('useChat', () => {
 
     await act(() => result.current.selectCandidate(exchange, 1));
     exchange = result.current.active.exchanges[0];
-    expect(exchange).toMatchObject({ selectedCandidate: 1, response: 'Also formal.', status: 'complete' });
+    expect(exchange).toMatchObject({ selectedCandidate: 1, response: 'Also formal.', status: 'complete', live: false });
     expect(result.current.awaitingChoice).toBe(false);
   });
 
