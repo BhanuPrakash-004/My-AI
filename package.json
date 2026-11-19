@@ -1,0 +1,16 @@
+{
+  "name": "timbre",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI chat assistant with streaming replies, saved history, and a tone toggle. React + Tailwind, Express, MongoDB, Claude API.",
+  "scripts": {
+    "postinstall": "npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n server,client -c cyan,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "start": "npm start --prefix server",
+    "smoke": "npm run smoke --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  }
+}
